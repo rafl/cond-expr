@@ -10,36 +10,36 @@
 static void
 THX_demand_unichar (pTHX_ I32 c, U32 flags)
 {
-	if (!(flags & DEMAND_IMMEDIATE))
-      lex_read_space(0);
+  if (!(flags & DEMAND_IMMEDIATE))
+    lex_read_space(0);
 
-	if (lex_peek_unichar(0) != c)
-      croak("syntax error");
+  if (lex_peek_unichar(0) != c)
+    croak("syntax error");
 
-	if (!(flags & DEMAND_NOCONSUME))
-      lex_read_unichar(0);
+  if (!(flags & DEMAND_NOCONSUME))
+    lex_read_unichar(0);
 }
 
 #define parse_idword(word) THX_parse_idword(aTHX_ word)
 static bool
 THX_parse_idword(pTHX_ char const *word)
 {
-	char *start, *s, c;
+  char *start, *s, c;
 
-	s = start = PL_parser->bufptr;
-	c = *s;
+  s = start = PL_parser->bufptr;
+  c = *s;
 
-	if (!isIDFIRST(c))
-      return 0;
+  if (!isIDFIRST(c))
+    return 0;
 
-	do {
-		c = *++s;
-	} while (isALNUM(c));
+  do {
+    c = *++s;
+  } while (isALNUM(c));
 
-    if (strnNE(word, start, s-start))
-      return 0;
+  if (strnNE(word, start, s-start))
+    return 0;
 
-	lex_read_to(s);
+  lex_read_to(s);
     return 1;
 }
 
