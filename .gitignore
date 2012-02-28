@@ -1,0 +1,11 @@
+.*
+!.gitignore
+*META*
+Makefile*
+!Makefile.PL
+*blib
+*.h
+Expr.*
+!Expr.xs
+Cond-Expr-*
+
