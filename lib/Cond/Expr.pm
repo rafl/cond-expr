@@ -29,7 +29,6 @@ XSLoader::load(
             otherwise       { no_answer    => 1 }
         ),
     );
-}
 
 =head1 DESCRIPTION
 
